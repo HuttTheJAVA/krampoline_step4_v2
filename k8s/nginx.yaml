@@ -48,13 +48,12 @@ metadata:
   labels:
     app.kubernetes.io/managed-by: kargocd
   name: nginx
-  namespace: default
 spec:
   rules:
     - http:
         paths:
-          - backend:
-              serviceName: nginx
+          - path: /
+            pathType: Prefix
+            backend:
+              serviceName: nginx-service
               servicePort: 80
-              path: /
-              pathType: Prefix
